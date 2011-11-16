@@ -28,7 +28,8 @@ class GraphiteGraph
                    :ymax => nil,
                    :area => :none,
                    :hide_grid => nil,
-                   :template => nil}.merge(@overrides)
+                   :template => nil,
+                   :hide_axes => nil}.merge(@overrides)
 
   end
 
@@ -192,6 +193,7 @@ class GraphiteGraph
     url_parts << "yMin=#{properties[:ymin]}" if properties[:ymin]
     url_parts << "yMax=#{properties[:ymax]}" if properties[:ymax]
     url_parts << "hideGrid=#{properties[:hide_grid]}" if properties[:hide_grid]
+    url_parts << "hideAxes=#{properties}[:hide_axes]}" if properties[:hide_axes]
 
     target_order.each do |name|
       target = targets[name]
