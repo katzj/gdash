@@ -2,7 +2,7 @@ class GDash
     class Dashboard
         attr_accessor :properties
 
-        def initialize(short_name, dir, graph_width=500, graph_height=250)
+        def initialize(short_name, dir, graph_width=500, graph_height=250, graph_columns=2)
             raise "Cannot find dashboard directory #{dir}" unless File.directory?(dir)
 
             @properties = {}
@@ -12,6 +12,7 @@ class GDash
             @properties[:yaml] = File.join(dir, short_name, "dash.yaml")
             @properties[:graph_width] = graph_width
             @properties[:graph_height] = graph_height
+            @properties[:graph_columns] = graph_columns
 
             raise "Cannot find YAML file #{yaml}" unless File.exist?(yaml)
 

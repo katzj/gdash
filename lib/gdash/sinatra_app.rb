@@ -32,7 +32,7 @@ class GDash
             Dir.entries(@graph_templates).each do |category|
               if File.directory?("#{@graph_templates}/#{category}")
                 unless ("#{category}" =~ /^\./ )
-                  @top_level["#{category}"] = GDash.new(@graphite_base, "/render/", File.join(@graph_templates, "/#{category}"), @graph_width, @graph_height)
+                  @top_level["#{category}"] = GDash.new(@graphite_base, "/render/", File.join(@graph_templates, "/#{category}"), @graph_width, @graph_height, @graph_columns)
                 end
               end
             end

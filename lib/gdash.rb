@@ -11,21 +11,23 @@ class GDash
 
     attr_reader :graphite_base, :graphite_render, :dash_templates, :height, :width
 
-    def initialize(graphite_base, render_url, dash_templates, width=500, height=250)
+    def initialize(graphite_base, render_url, dash_templates, width=500, height=250, graph_columns=2)
         @graphite_base = graphite_base
         @graphite_render = [@graphite_base, "/render/"].join
         @dash_templates = dash_templates
         @height = height
         @width = width
+        @graph_columns = graph_columns
 
         raise "Dashboard templates directory #{@dash_templates} does not exist" unless File.directory?(@dash_templates)
     end
 
-    def dashboard(name, width=nil, height=nil)
+    def dashboard(name, width=nil, height=nil, graph_columns=nil)
         width ||= @width
         height ||= @height
+        graph_columns ||= @graph_columns
 
-        Dashboard.new(name, dash_templates, width, height)
+        Dashboard.new(name, dash_templates, width, height, graph_columns)
     end
 
     def list

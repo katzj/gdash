@@ -3,7 +3,7 @@
 <div class="row">
     <table>
     <% row = 1 %>
-    <% @dashboard.graphs.in_groups_of(@graph_columns) do |graphs| %>
+    <% @dashboard.graphs.in_groups_of(@dashboard.graph_columns) do |graphs| %>
 
         <tr>
         <% graphs.each do |graph| %>
